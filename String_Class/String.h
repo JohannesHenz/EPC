@@ -12,15 +12,17 @@ class String {
 public:
     String(char* s){};
     ~String(){};
-    void reserve();
-    int capacity();
-    int size();
-    std::string append(std::string str);
+    char* c_str();
+    void append(char* s);
+    const int size();
+    void reserve(int new_size);
+    const int capacity();
 
 private:
-    std::string str;
+    char* string;
+    char*[] all_strings;
     int cap;
-    int sz;
+    int size;
 
 };
 

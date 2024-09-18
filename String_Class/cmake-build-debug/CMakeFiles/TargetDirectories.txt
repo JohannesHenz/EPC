@@ -1,3 +1,0 @@
-C:/Users/johen/CLionProjects/EPC/String_Class/cmake-build-debug/CMakeFiles/String_Class.dir
-C:/Users/johen/CLionProjects/EPC/String_Class/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/johen/CLionProjects/EPC/String_Class/cmake-build-debug/CMakeFiles/rebuild_cache.dir
