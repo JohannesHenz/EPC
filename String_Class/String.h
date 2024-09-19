@@ -13,11 +13,11 @@ class String {
 public:
     String(const char* s);
     ~String();
-   const char* c_str();
+    const void c_str() const;
     void append(const char* s);
-    const int size();
+    int size() const;
     void reserve(const int new_size);
-    const int capacity();
+    int capacity () const;
 
 private:
     char* data;
@@ -25,10 +25,8 @@ private:
     int current_size = 0;
 
     //Helfer Funktionen
-    int string_length(const char* s);
-    void string_copy(char* dest, const char* src);
-    void string_concat(char* dest, const char* src);
-
+    int string_length(const char* s) const;
+    void string_copy(char* dest, const char* src) const;
 };
 
 

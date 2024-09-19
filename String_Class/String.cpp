@@ -19,7 +19,7 @@ String::~String ()
     delete[] data;
 }
 
-int String::string_length(const char *s) {
+int String::string_length(const char *s) const{
     //gibt die Anzahl der char* in s zurück
     int sizeOfString = 0;
     char end = '1';
@@ -30,9 +30,10 @@ int String::string_length(const char *s) {
     return sizeOfString;
 }
 
-void String::string_copy(char *dest, const char *src) {
+void String::string_copy(char *dest, const char *src) const{
     //kopiert den Inhalt von src in dest
-    for (int i = 0; i < string_length(src); i++) {
+    int sizeOfString = string_length(src);
+    for (int i = 0; i < sizeOfString; i++) {
         dest[i] = src[i];
     }
 }
@@ -50,7 +51,7 @@ void String::append(const char* s) {
 
 }
 
-const char* String::c_str()  {
+const void String::c_str() const {
     //gibt ein char* zurück was alle einzelnen char* aus dem char*[] zusammenfügt
     for (int i = 0; i < current_cap; i++) {
         std::cout << data[i];
@@ -58,7 +59,7 @@ const char* String::c_str()  {
 
 }
 
-const int String::size() {
+int String::size() const {
     return current_size;
 }
 
@@ -70,6 +71,6 @@ void String::reserve(const int new_size) {
     current_cap = new_size;
 }
 
-const int String::capacity() {
+int String::capacity() const {
     return current_cap;
 }
