@@ -4,31 +4,72 @@
 
 #include "String.h"
 
-String String(char* s) {
-    str = new std::string s;
+String::String(const char* s) {
+
+    int initial_size = string_length(s);
+    current_cap = initial_size;
+    current_size = initial_size;
+    data = new char[initial_size]; //erstellt ein neues char array mit der Größe von initial_size
+
+    string_copy(data, s); //kopiert den Inhalt von s in data
 }
 
-String ~String ()
+String::~String ()
 {
-    delete str;
+    delete[] data;
 }
 
-void append(char* s) {
-    //fügt ein char* array zu dem char*[] array hinzu
+int String::string_length(const char *s) {
+    //gibt die Anzahl der char* in s zurück
+    int sizeOfString = 0;
+    char end = '1';
+    while (end != '\0') {
+        sizeOfString++;
+        end = s[sizeOfString];
+    }
+    return sizeOfString;
 }
 
-char* c_str() {
+void String::string_copy(char *dest, const char *src) {
+    //kopiert den Inhalt von src in dest
+    for (int i = 0; i < string_length(src); i++) {
+        dest[i] = src[i];
+    }
+}
+
+
+void String::append(const char* s) {
+
+    int new_string_size = string_length(s);
+    if (current_size + new_string_size >= current_cap) {
+        reserve(current_size + new_string_size + 1);
+    }
+    string_copy(data + current_size, s);
+    current_size += new_string_size;
+    data[current_size] = '\0';
+
+}
+
+const char* String::c_str()  {
     //gibt ein char* zurück was alle einzelnen char* aus dem char*[] zusammenfügt
+    for (int i = 0; i < current_cap; i++) {
+        std::cout << data[i];
+    }
+
 }
 
-const int size() {
-    //gibt die Anzahl der char* im char*[] zurück
+const int String::size() {
+    return current_size;
 }
 
-void reserve(int new_size) {
-    //ändert die Größe des char*[] arrays
+void String::reserve(const int new_size) {
+    char* new_data = new char[new_size];
+    string_copy(new_data, data);
+    delete[] data;
+    data = new_data;
+    current_cap = new_size;
 }
 
-const int capacity() {
-    //gibt die Kapazität des char*[] arrays zurück
+const int String::capacity() {
+    return current_cap;
 }
