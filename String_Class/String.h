@@ -13,7 +13,7 @@ class String {
 public:
     String(const char* s);
     ~String();
-    const void c_str() const;
+    const char* c_str() const;
     void append(const char* s);
     int size() const;
     void reserve(const int new_size);

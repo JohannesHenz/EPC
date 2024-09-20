@@ -32,30 +32,28 @@ int String::string_length(const char *s) const{
 
 void String::string_copy(char *dest, const char *src) const{
     //kopiert den Inhalt von src in dest
-    int sizeOfString = string_length(src);
-    for (int i = 0; i < sizeOfString; i++) {
+    for (int i = 0; i < capacity(); i++) {
         dest[i] = src[i];
     }
+    dest[capacity()] = '\0';
 }
 
 
-void String::append(const char* s) {
+void String::append(const char* stringToAppend) {
 
-    int new_string_size = string_length(s);
+    int new_string_size = string_length(stringToAppend);
     if (current_size + new_string_size >= current_cap) {
-        reserve(current_size + new_string_size + 1);
+        reserve(current_size + new_string_size);
     }
-    string_copy(data + current_size, s);
+    string_copy(data + current_size, stringToAppend);
     current_size += new_string_size;
     data[current_size] = '\0';
 
 }
 
-const void String::c_str() const {
+const char* String::c_str() const {
     //gibt ein char* zurück was alle einzelnen char* aus dem char*[] zusammenfügt
-    for (int i = 0; i < current_cap; i++) {
-        std::cout << data[i];
-    }
+    return data;
 
 }
 
@@ -64,11 +62,20 @@ int String::size() const {
 }
 
 void String::reserve(const int new_size) {
-    char* new_data = new char[new_size];
-    string_copy(new_data, data);
-    delete[] data;
-    data = new_data;
-    current_cap = new_size;
+    if (new_size >= current_cap) {
+        char* new_data = new char[new_size];
+        std::cout << "Length of new Data: " << string_length(new_data) << std::endl;
+        string_copy(new_data, data);
+        delete[] data;
+        data = new_data;
+        std::cout << "Length of Data: " << string_length(data) << std::endl;
+        current_cap = new_size;
+    }
+    else {
+        std::cout << "New size is smaller than current size" << std::endl;
+    }
+
+
 }
 
 int String::capacity() const {
