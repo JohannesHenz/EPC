@@ -13,11 +13,25 @@ class String {
 public:
     String(const char* s);
     ~String();
+    String(const String& other); //Copy Constructor
+    String& operator=(const String& other); //Copy AssignmentOperator
+    String(String&& other) noexcept; //Move Constructor
+    String& operator=(String&& other) noexcept; //Move Assignment Operator
     const char* c_str() const;
-    void append(const char* s);
+    void append(const char* stringToAppend);
     int size() const;
-    void reserve(const int new_size);
+    void reserve(int new_size);
     int capacity () const;
+
+
+
+    String operator+(const String& stringToAdd);
+    String operator+(const char* charPointerToAdd);
+
+    void operator+=(const String& stringToAppend);
+    void operator+=(const char* charPointerToAppend);
+
+
 
 private:
     char* data;

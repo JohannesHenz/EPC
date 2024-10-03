@@ -5,4 +5,5 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(String_Class main.cpp
         String.cpp
-        String.h)
+        String.h
+        doctest.h)
