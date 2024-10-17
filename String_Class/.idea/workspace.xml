@@ -23,20 +23,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e45861e-360b-4f64-a029-fdcdfe287f14" name="Changes" comment="Johannes String initial commit">
-      <change afterPath="$PROJECT_DIR$/Gruppe_D_String/makefile" afterDir="false" />
+    <list default="true" id="4e45861e-360b-4f64-a029-fdcdfe287f14" name="Changes" comment="Exercise 4 Iteratoren mit Nino">
+      <change afterPath="$PROJECT_DIR$/Gruppe_D_String/doctest.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gruppe_D_String/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Gruppe_D_String/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gruppe_D_String/String.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Gruppe_D_String/String.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gruppe_D_String/String.h" beforeDir="false" afterPath="$PROJECT_DIR$/Gruppe_D_String/String.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gruppe_D_String/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-df31adf258f2114bbd2f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gruppe_D_String/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-ab69094fcc71f854b0e6.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gruppe_D_String/cmake-build-debug/.cmake/api/v1/reply/index-2024-10-03T14-20-48-0605.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gruppe_D_String/cmake-build-debug/.cmake/api/v1/reply/target-String_Class-Debug-8cf34bd1f89685011f3b.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gruppe_D_String/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Gruppe_D_String/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gruppe_D_String/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Gruppe_D_String/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gruppe_D_String/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/Gruppe_D_String/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gruppe_D_String/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Gruppe_D_String/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,12 +132,20 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "CMake Application.String_Class.executor": "Run",
+    "Doctest.Iterate over String with self implemented iterator.executor": "Run",
     "Doctest.Testing + operator overload for String object + String object.executor": "Run",
     "Doctest.Testing + operator overload for String object + char*.executor": "Run",
     "Doctest.Testing += operator overload for String object + String object.executor": "Run",
     "Doctest.Testing += operator overload for String object + char*.executor": "Run",
     "Doctest.Testing String constructor.executor": "Run",
+    "Doctest.Testing std::find with String iterator.executor": "Run",
+    "Doctest.Testing the != operator overload for the Iterator.executor": "Run",
+    "Doctest.Testing the * operator overload for the Iterator.executor": "Run",
+    "Doctest.Testing the == operator overload for the Iterator.executor": "Run",
+    "Doctest.Testing the begin method.executor": "Run",
+    "Doctest.Testing the end method.executor": "Run",
     "Doctest.Unnamed.executor": "Run",
+    "Doctest.std::find fails to find the element.executor": "Run",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -153,7 +153,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "Johannes-String",
-    "last_opened_file_path": "C:/Users/johen/CLionProjects/EPC/String_Class/Gruppe_D_String/CMakeLists.txt",
+    "last_opened_file_path": "C:/Users/johen/CLionProjects/EPC",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -168,37 +168,32 @@
       <recent name="C:\Users\johen\CLionProjects\EPC\String_Class\Gruppe_D_String" />
     </key>
   </component>
-  <component name="RunManager" selected="Doctest.Unnamed">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Testing + operator overload for String object + String object" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="String_Class" TARGET_NAME="String_Class" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="String_Class" RUN_TARGET_NAME="String_Class" TEST_METHOD="esting + operator overload for String object + String object" TEST_MODE="SUITE_TEST">
+  <component name="RunManager" selected="Doctest.Testing std::find with String iterator">
+    <configuration name="Testing + operator overload for String object + String object" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="String_Class" TARGET_NAME="String_Class" RUN_TARGET_PROJECT_NAME="String_Class" RUN_TARGET_NAME="String_Class" TEST_METHOD="Testing + operator overload for String object + String object" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Testing + operator overload for String object + char*" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="String_Class" TARGET_NAME="String_Class" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="String_Class" RUN_TARGET_NAME="String_Class" TEST_METHOD="Testing + operator overload for String object + char*" TEST_MODE="SUITE_TEST">
+    <configuration name="Testing std::find with String iterator" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="String_Class" TARGET_NAME="String_Class" RUN_TARGET_PROJECT_NAME="String_Class" RUN_TARGET_NAME="String_Class" TEST_METHOD="Testing std::find with String iterator" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Testing += operator overload for String object + String object" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="String_Class" TARGET_NAME="String_Class" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="String_Class" RUN_TARGET_NAME="String_Class" TEST_METHOD="Testing += operator overload for String object + String object" TEST_MODE="SUITE_TEST">
+    <configuration name="Testing the * operator overload for the Iterator" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="String_Class" TARGET_NAME="String_Class" RUN_TARGET_PROJECT_NAME="String_Class" RUN_TARGET_NAME="String_Class" TEST_METHOD="Testing the * operator overload for the Iterator" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Testing += operator overload for String object + char*" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="String_Class" TARGET_NAME="String_Class" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="String_Class" RUN_TARGET_NAME="String_Class" TEST_METHOD="Testing += operator overload for String object + char*" TEST_MODE="SUITE_TEST">
+    <configuration name="Unnamed" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="String_Class" TARGET_NAME="String_Class" RUN_TARGET_PROJECT_NAME="String_Class" RUN_TARGET_NAME="String_Class" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="String_Class" TARGET_NAME="String_Class" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="String_Class" RUN_TARGET_NAME="String_Class" TEST_MODE="SUITE_TEST">
+    <configuration name="std::find fails to find the element" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="String_Class" TARGET_NAME="String_Class" RUN_TARGET_PROJECT_NAME="String_Class" RUN_TARGET_NAME="String_Class" TEST_METHOD="std::find fails to find the element" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
@@ -212,18 +207,18 @@
     <list>
       <item itemvalue="CMake Application.String_Class" />
       <item itemvalue="Doctest.Testing + operator overload for String object + String object" />
-      <item itemvalue="Doctest.Testing + operator overload for String object + char*" />
-      <item itemvalue="Doctest.Testing += operator overload for String object + String object" />
-      <item itemvalue="Doctest.Testing += operator overload for String object + char*" />
+      <item itemvalue="Doctest.Testing std::find with String iterator" />
+      <item itemvalue="Doctest.Testing the * operator overload for the Iterator" />
       <item itemvalue="Doctest.Unnamed" />
+      <item itemvalue="Doctest.std::find fails to find the element" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Doctest.Testing std::find with String iterator" />
+        <item itemvalue="Doctest.std::find fails to find the element" />
         <item itemvalue="Doctest.Unnamed" />
-        <item itemvalue="Doctest.Testing + operator overload for String object + char*" />
-        <item itemvalue="Doctest.Testing += operator overload for String object + char*" />
-        <item itemvalue="Doctest.Testing += operator overload for String object + String object" />
         <item itemvalue="Doctest.Testing + operator overload for String object + String object" />
+        <item itemvalue="Doctest.Testing the * operator overload for the Iterator" />
       </list>
     </recent_temporary>
   </component>
@@ -238,7 +233,10 @@
       <workItem from="1726600869370" duration="2645000" />
       <workItem from="1726751407703" duration="6122000" />
       <workItem from="1726816376725" duration="5000" />
-      <workItem from="1727964349456" duration="7216000" />
+      <workItem from="1727964349456" duration="8112000" />
+      <workItem from="1728571288375" duration="7912000" />
+      <workItem from="1728594858459" duration="16000" />
+      <workItem from="1729155297776" duration="654000" />
     </task>
     <task id="LOCAL-00001" summary="Added some beginning methods">
       <option name="closed" value="true" />
@@ -256,7 +254,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727965320380</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Endlich funktionierts">
+      <option name="closed" value="true" />
+      <created>1727972032132</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1727972032132</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Exercise 4 Iteratoren mit Nino">
+      <option name="closed" value="true" />
+      <created>1728588054755</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728588054756</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,7 +295,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added some beginning methods" />
     <MESSAGE value="Johannes String initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Johannes String initial commit" />
+    <MESSAGE value="Endlich funktionierts" />
+    <MESSAGE value="Exercise 4 Iteratoren mit Nino" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exercise 4 Iteratoren mit Nino" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
