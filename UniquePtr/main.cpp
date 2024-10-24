@@ -6,10 +6,9 @@
 #include "MyPointer.h"
 #include <string>
 
-
-TEST_CASE("MyPointer initialization and dereference") {
+TEST_CASE("MyPointer initialisierung und Dereferenzierung") {
     MyPointer<int> intPtr(new int(10));
-    CHECK(*intPtr == 10);  // Dereference test
+    CHECK(*intPtr == 10);  // Dereferenzierungstest
 }
 
 struct Entity {
@@ -17,30 +16,27 @@ struct Entity {
     Entity(int id) : id(id) {}
 };
 
-TEST_CASE("MyPointer arrow operator") {
+TEST_CASE("MyPointer Pfeiloperator") {
     MyPointer<Entity> entityPtr(new Entity(5));
-    CHECK(entityPtr->id == 5);  // Arrow operator test
+    CHECK(entityPtr->id == 5);  // Pfeiloperator-Test
 }
 
-
-TEST_CASE("MyPointer boolean conversion") {
+TEST_CASE("MyPointer bool umwandlung") {
     MyPointer<int> intPtr(new int(10));
-    CHECK(static_cast<bool>(intPtr) == true);  // Non-null pointer should return true
+    CHECK(static_cast<bool>(intPtr) == true);  // Nicht-null-Pointer sollte true zurückgeben
 
     MyPointer<int> emptyPtr;
-    CHECK(static_cast<bool>(emptyPtr) == false);  // Null pointer should return false
+    CHECK(static_cast<bool>(emptyPtr) == false);  // Null-Pointer sollte false zurückgeben
 }
-
 
 TEST_CASE("MyPointer move constructor") {
     MyPointer<int> intPtr(new int(20));
     MyPointer<int> movedPtr(std::move(intPtr));
 
-    CHECK(static_cast<bool>(intPtr) == false);  // Original pointer should be null
-    CHECK(static_cast<bool>(movedPtr) == true);  // Moved pointer should be valid
-    CHECK(*movedPtr == 20);  // Moved pointer should retain the value
+    CHECK(static_cast<bool>(intPtr) == false);  // Ursprünglicher Pointer sollte null sein
+    CHECK(static_cast<bool>(movedPtr) == true);  // Verschobener Pointer sollte gültig sein
+    CHECK(*movedPtr == 20);  // Verschobener Pointer sollte den Wert behalten
 }
-
 
 TEST_CASE("MyPointer move assignment operator") {
     MyPointer<int> intPtr(new int(30));
@@ -48,98 +44,46 @@ TEST_CASE("MyPointer move assignment operator") {
 
     assignedPtr = std::move(intPtr);
 
-    CHECK(static_cast<bool>(intPtr) == false);  // Original pointer should be null
-    CHECK(static_cast<bool>(assignedPtr) == true);  // Assigned pointer should be valid
-    CHECK(*assignedPtr == 30);  // Assigned pointer should retain the value
+    CHECK(static_cast<bool>(intPtr) == false);  // Ursprünglicher Pointer sollte null sein
+    CHECK(static_cast<bool>(assignedPtr) == true);  // Zugewiesener Pointer sollte gültig sein
+    CHECK(*assignedPtr == 30);  // Zugewiesener Pointer sollte den Wert behalten
 }
 
-
-TEST_CASE("MyPointer release method") {
+TEST_CASE("MyPointer release methode") {
     MyPointer<int> intPtr(new int(40));
     int* rawPtr = intPtr.release();
 
-    CHECK(static_cast<bool>(intPtr) == false);  // After release, pointer should be null
-    CHECK(*rawPtr == 40);  // Raw pointer should retain the value
-    delete rawPtr;  // Clean up manually
+    CHECK(static_cast<bool>(intPtr) == false);  // Nach release sollte der Pointer null sein
+    CHECK(*rawPtr == 40);  // raw Pointer sollte den Wert behalten
+    delete rawPtr;  // Manuelles Aufräumen
 }
 
-TEST_CASE("MyPointer reset method") {
+TEST_CASE("MyPointer reset methode") {
     MyPointer<int> intPtr(new int(50));
     intPtr.reset(new int(60));
 
-    CHECK(*intPtr == 60);  // Pointer should hold the new value
+    CHECK(*intPtr == 60);  // Pointer sollte den neuen Wert halten
 
-    intPtr.reset();  // Reset to null
-    CHECK(static_cast<bool>(intPtr) == false);  // After reset, pointer should be null
+    intPtr.reset();  // Auf null zurücksetzen
+    CHECK(static_cast<bool>(intPtr) == false);  // Nach reset sollte der Pointer null sein
 }
 
-
-TEST_CASE("MyPointer swap method") {
+TEST_CASE("MyPointer swap methode") {
     MyPointer<int> ptr1(new int(70));
     MyPointer<int> ptr2(new int(80));
 
     ptr1.swap(ptr2);
 
-    CHECK(*ptr1 == 80);  // Pointers should have swapped values
+    CHECK(*ptr1 == 80);  // Pointer sollten die Werte getauscht haben
     CHECK(*ptr2 == 70);
 }
 
-
 void customDeleter(int* ptr) {
-    std::cout << "Custom deleter called for value: " << *ptr << std::endl;
+    std::cout << "Benutzerdefinierter Deleter aufgerufen für Wert: " << *ptr << std::endl;
     delete ptr;
 }
 
 TEST_CASE("MyPointer custom deleter") {
     MyPointer<int, void(*)(int*)> intPtr(new int(90), customDeleter);
-    CHECK(*intPtr == 90);  // Custom deleter should be set and functional
+    CHECK(*intPtr == 90);  // Benutzerdefinierter Deleter sollte gesetzt und funktionsfähig sein
 }
-
-
-/*
-TEST_CASE("MyPointer initialisieren und operatoren ausprobieren") {
-    MyPointer<int> intPtr(new int(10));
-    CHECK(*intPtr == 10);
-    CHECK(intPtr.operator->() != nullptr);
-    CHECK(static_cast<bool>(intPtr) == true);
-
-    MyPointer<int> emptyPtr;
-    CHECK(static_cast<bool>(emptyPtr) == false);
-}
-
-TEST_CASE("MyPointer move semantics") {
-    MyPointer<int> intPtr(new int(20));
-    MyPointer<int> movedPtr(std::move(intPtr));
-    CHECK(static_cast<bool>(intPtr) == false);
-    CHECK(static_cast<bool>(movedPtr) == true);
-    CHECK(*movedPtr == 20);
-
-    MyPointer<int> assignedPtr;
-    assignedPtr = std::move(movedPtr);
-    CHECK(static_cast<bool>(movedPtr) == false);
-    CHECK(static_cast<bool>(assignedPtr) == true);
-    CHECK(*assignedPtr == 20);
-}
-
-TEST_CASE("MyPointer release and reset") {
-    MyPointer<int> intPtr(new int(30));
-    int* rawPtr = intPtr.release();
-    CHECK(static_cast<bool>(intPtr) == false);
-    CHECK(*rawPtr == 30);
-    delete rawPtr;
-
-    intPtr.reset(new int(40));
-    CHECK(static_cast<bool>(intPtr) == true);
-    CHECK(*intPtr == 40);
-    intPtr.reset();
-    CHECK(static_cast<bool>(intPtr) == false);
-}
-
-TEST_CASE("MyPointer swap") {
-    MyPointer<int> ptr1(new int(50));
-    MyPointer<int> ptr2(new int(60));
-    ptr1.swap(ptr2);
-    CHECK(*ptr1 == 60);
-    CHECK(*ptr2 == 50);
-}
-*/
