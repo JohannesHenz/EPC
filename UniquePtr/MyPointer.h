@@ -91,7 +91,7 @@ template<typename T, typename Deleter>
 T* MyPointer<T, Deleter>::release() {
     T* oldPtr = ptr;
     ptr = nullptr;
-    return oldPtr;  // Gibt den rohen Pointer zurück und setzt internen Pointer auf nullptr
+    return oldPtr;  // Gibt den raw Pointer zurück und setzt internen Pointer auf nullptr
 }
 
 // Zurücksetzen des Pointers mit Standardwert nullptr
@@ -106,13 +106,15 @@ void MyPointer<T, Deleter>::reset(T* newPtr) {
 // Tauschen der Pointer und Deleter zwischen zwei MyPointer Objekten
 template<typename T, typename Deleter>
 void MyPointer<T, Deleter>::swap(MyPointer& other) {
-    T* tempPtr = this->ptr;
-    this->ptr = other.ptr;
-    other.ptr = tempPtr;
+    T* tempPtr = this->ptr; //Temporärer irgendwas Pointer wird dem ptr wert des jetztigen MyPointer Objekts gesetzt
+    this->ptr = other.ptr; //Der ptr wert des jetztigen MyPointer Objekts wird auf den ptr Wert des übergebenen (other) MyPointer Objects gesetzt
+    other.ptr = tempPtr; //der ptr wert des übergebenen Objekts (other) wird auf den wert von dem jetzigen Objekt gesetzt
 
+    // Gleich mit dem Custom Deleter
     Deleter tempDeleter = this->deleter;
     this->deleter = other.deleter;
     other.deleter = tempDeleter;
+
 }
 
 #endif // MYPOINTER_H

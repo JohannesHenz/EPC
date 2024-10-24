@@ -53,7 +53,8 @@ TEST_CASE("MyPointer release methode") {
     MyPointer<int> intPtr(new int(40));
     int* rawPtr = intPtr.release();
 
-    CHECK(static_cast<bool>(intPtr) == false);  // Nach release sollte der Pointer null sein
+    std::cout << "raw Pointer: " << *rawPtr << std::endl;
+    CHECK(static_cast<bool>(intPtr) == false);  // Checkt ob nach release der Pointer null ist
     CHECK(*rawPtr == 40);  // raw Pointer sollte den Wert behalten
     delete rawPtr;  // Manuelles Aufräumen
 }
@@ -68,6 +69,12 @@ TEST_CASE("MyPointer reset methode") {
     CHECK(static_cast<bool>(intPtr) == false);  // Nach reset sollte der Pointer null sein
 }
 
+TEST_CASE("reset den nullptr") {
+    MyPointer<int> ptr(nullptr);
+    ptr.reset();
+    CHECK(static_cast<bool>(ptr) == false);
+}
+
 TEST_CASE("MyPointer swap methode") {
     MyPointer<int> ptr1(new int(70));
     MyPointer<int> ptr2(new int(80));
@@ -78,6 +85,36 @@ TEST_CASE("MyPointer swap methode") {
     CHECK(*ptr2 == 70);
 }
 
+TEST_CASE("swap mit Nullptr") {
+    MyPointer<int> ptr1(new int(70));
+    MyPointer<int> ptr2(nullptr);
+
+    ptr1.swap(ptr2);
+
+    CHECK(static_cast<bool>(ptr1) == false); // Checkt ob nach release der Pointer null ist
+    CHECK(*ptr2 == 70);
+}
+
+TEST_CASE("Swap hin und zurück") {
+    MyPointer<int> ptr1(new int(70));
+    MyPointer<int> ptr2(new int(30));
+
+    ptr1.swap(ptr2);
+    ptr1.swap(ptr2);
+
+    CHECK(*ptr1 == 70);
+    CHECK(*ptr2 == 30);
+}
+
+
+TEST_CASE("MyPointer swap methode mit sich selber") {
+    MyPointer<int> ptr1(new int(70));
+    ptr1.swap(ptr1);
+
+    CHECK(*ptr1 == 70);  // Check ob sich die werte verändert haben
+}
+
+
 void customDeleter(int* ptr) {
     std::cout << "Benutzerdefinierter Deleter aufgerufen für Wert: " << *ptr << std::endl;
     delete ptr;
@@ -86,4 +123,10 @@ void customDeleter(int* ptr) {
 TEST_CASE("MyPointer custom deleter") {
     MyPointer<int, void(*)(int*)> intPtr(new int(90), customDeleter);
     CHECK(*intPtr == 90);  // Benutzerdefinierter Deleter sollte gesetzt und funktionsfähig sein
+}
+
+
+TEST_CASE("Destruktor mit nullptr") {
+    MyPointer<int> ptr(nullptr);
+
 }
